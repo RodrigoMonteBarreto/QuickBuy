@@ -32,12 +32,20 @@ namespace QuickBuy.Repositorio.Config
                 .Property(u => u.Nome)
                 .IsRequired()
                 .HasMaxLength(50)
-                .HasColumnType("nvarchar");
+                .HasColumnType("nvarchar(50)");
 
             builder
                 .Property(u => u.Sobrenome)
                 .IsRequired()
                 .HasMaxLength(50);
+
+            // O HasMany dá a possiblidade de acessar as propriedades de pedido
+            // Um usuario u pode ter muitos pedidos (HasMany) e um Pedido p só pode ter um usuario
+
+            builder
+                .HasMany(u => u.Pedidos)
+                .WithOne(p => p.Usuario);
+
 
             //builder.Property(u => u.Pedidos);
         }
