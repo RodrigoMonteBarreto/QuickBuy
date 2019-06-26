@@ -2,8 +2,8 @@ import {Component} from "@angular/core"
 
 
 @Component({
-  selector: "produto",
-  template: "<html> <body> {{obterNome() }}} </body> </html>"
+  selector: "app-produto",
+  template: "<html> <body> {{obterNome() }} </body> </html>"
 
 })
 export class ProdutoComponent {
