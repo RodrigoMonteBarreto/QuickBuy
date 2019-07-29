@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace QuickBuy.Web.Controllers
 {
     [Route("api/[Controller]")]
-    public class UsuarioController:Controller
+    public class UsuarioController : Controller
     {
         [HttpGet]
         public ActionResult Get()
@@ -18,16 +18,14 @@ namespace QuickBuy.Web.Controllers
             {
                 return Ok();
 
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.ToString());
             }
         }
-    }
 
 
-
-   
         [HttpPost("VerificarUsuario")]
         public ActionResult VerificarUsuario([FromBody] Usuario usuario)
         {
@@ -35,9 +33,9 @@ namespace QuickBuy.Web.Controllers
             try
             {
 
-                if(usuario.Email == "rodrigobarreto@gmail.com" && usuario.Senha == "abc")
-                 return Ok(usuario);
-            
+                if (usuario.Email == "rodrigobarreto@.com.br" && usuario.Senha == "abc")
+                    return Ok(usuario);
+
                 return BadRequest("Usuario ou senha invalido");
 
             }
@@ -48,21 +46,20 @@ namespace QuickBuy.Web.Controllers
         }
 
 
-    [HttpPost]
-    public ActionResult Post()
-    {
-
-        try
+        [HttpPost]
+        public ActionResult Post()
         {
-            return Ok();
 
-        }
-        catch (Exception ex)
-        {
-            return BadRequest(ex.ToString());
+            try
+            {
+                return Ok();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.ToString());
+            }
         }
     }
+
 }
-
-
-
