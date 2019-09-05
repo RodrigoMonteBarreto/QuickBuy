@@ -61,19 +61,15 @@
            }"
            [(ngModel)]="usuario.nome"
            #nome="ngModel"
-           email
            required />
 
     <div class="invalid-feedback mb-2" *ngIf="nome.invalid && (nome.dirty || nome.touched)">
 
-      <div *ngIf="email.errors.required">
+      <div *ngIf="nome.errors.required">
         Nome é de preenchimento obrigatório
       </div>
 
     </div>
-
-
-
 
     <label for="inputSobreNome" class="sr-only"> SobreNome</label>
     <input type="text" id="inputSobreNome"
@@ -104,6 +100,9 @@
       {{mensagem}}
     </div>
 
+    <div class="alert alert-success" *ngIf="usuarioCadastrado">
+      Usuario Cadastrado com Sucesso! <a class="alert-link"[routerLink]='["/entrar"]'>Clique aqui</a> para entrar no sistema com a sua conta.
+    </div>
     <img src="../../../assets/img/quick-b-logo.jpg" />
 
   </form>

@@ -9,6 +9,7 @@ using QuickBuy.Repositorio.Contexto;
 using Microsoft.EntityFrameworkCore;
 using QuickBuy.Dominio.Contratos;
 using QuickBuy.Repositorio.Repositorios;
+using Microsoft.AspNetCore.Http;
 
 namespace QuickBuy.Web
 {
@@ -33,6 +34,7 @@ namespace QuickBuy.Web
         {
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
  
             var connectionString = Configuration.GetConnectionString("QuickBuyDB");
             services.AddDbContext<QuickBuyContexto>(option =>
