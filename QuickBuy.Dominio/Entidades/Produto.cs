@@ -15,9 +15,15 @@ namespace QuickBuy.Dominio.Entidades
 
         public decimal Preco { get; set; }
 
+        public string NomeArquivo { get; set; }
+
         public override void Validate()
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(Nome))
+                AdicionarCritica("Nome do Produto não foi informado");
+
+            if (string.IsNullOrEmpty(Descricao))
+                AdicionarCritica("Descrição não foi informada");
         }
     }
 }
