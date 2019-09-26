@@ -9,17 +9,14 @@ using System.Linq;
 
 namespace QuickBuy.Web.Controllers
 {
-
-       [Route("api/[Controller]")]
-
-
-    public class ProdutoController :Controller
+    [Route("api/[Controller]")]
+    public class ProdutoController : Controller
     {
 
         private readonly IProdutoRepositorio _produtoRepositorio;
         private IHttpContextAccessor _httpContextAcessor;
         private IHostingEnvironment _hostingEnvironment;
-        public ProdutoController( IProdutoRepositorio produtoRepositorio, HttpContextAccessor httpContextAccessor, IHostingEnvironment hostingEnvironment)
+        public ProdutoController( IProdutoRepositorio produtoRepositorio, IHttpContextAccessor httpContextAccessor, IHostingEnvironment hostingEnvironment)
         {
             _produtoRepositorio = produtoRepositorio;
             _httpContextAcessor = httpContextAccessor;

@@ -26,7 +26,7 @@ export class ProdutoServico implements OnInit {
   }
 
   get headers(): HttpHeaders {
-    return new HttpHeaders().set('content-type', 'aplication/json');
+    return new HttpHeaders().set('content-type', 'application/json');
   }
 
 
