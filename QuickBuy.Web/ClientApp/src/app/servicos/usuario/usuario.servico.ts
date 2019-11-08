@@ -6,7 +6,7 @@ import { Usuario } from "../../nav-menu/model/usuario";
 
 @Injectable({
   providedIn: "root"
-  
+
 })
 export class UsuarioServico {
 
@@ -14,7 +14,7 @@ export class UsuarioServico {
   private _usuario: Usuario;
 
 
-  
+
   set usuario(usuario: Usuario) {
 
     sessionStorage.setItem("usuario-autenticado", JSON.stringify(usuario));
@@ -32,6 +32,10 @@ export class UsuarioServico {
 
   public usuario_autenticado(): boolean {
     return this._usuario != null && this._usuario.email != "" && this._usuario.senha != "";
+  }
+
+  public usuario_administrador(): boolean {
+    return this.usuario_autenticado() && this.usuario.ehAdministrador;
   }
 
   public limpar_sessao() {
@@ -59,7 +63,7 @@ export class UsuarioServico {
     }
 
     // this.baseURL = raiz do site que pode ser exemplo: http://www.quickbuy.com/
-    return this.http.post<Usuario>(this.baseURL + "api/usuario/VerificarUsuario" , body, {headers});
+    return this.http.post<Usuario>(this.baseURL + "api/usuario/VerificarUsuario", body, { headers });
 
   }
 

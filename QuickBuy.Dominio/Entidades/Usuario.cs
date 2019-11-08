@@ -17,6 +17,8 @@ namespace QuickBuy.Dominio.Entidades
 
         public string Sobrenome { get; set; }
 
+        public bool EhAdministrador { get; set; }
+
 
 
 

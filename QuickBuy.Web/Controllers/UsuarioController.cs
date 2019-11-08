@@ -89,6 +89,8 @@ namespace QuickBuy.Web.Controllers
                 if(usuarioCadastrado != null)
                 
                     return BadRequest("Usuario já cadastrado no sistema");
+
+                //usuario.EhAdministrador = true;
                 _usuarioRepositorio.Adicionar(usuario);
                 return Ok();
 
