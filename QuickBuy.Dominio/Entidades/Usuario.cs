@@ -20,8 +20,6 @@ namespace QuickBuy.Dominio.Entidades
         public bool EhAdministrador { get; set; }
 
 
-
-
         /// <summary>
         /// Um usuario pode ter nenhum ou muitos pedidos
         /// </summary>

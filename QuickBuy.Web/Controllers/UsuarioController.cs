@@ -34,7 +34,6 @@ namespace QuickBuy.Web.Controllers
             }
         }
 
-
         [HttpPost("VerificarUsuario")]
         public ActionResult VerificarUsuario([FromBody] Usuario usuario)
         {
@@ -44,33 +43,11 @@ namespace QuickBuy.Web.Controllers
 
                 var usuarioRetorno = _usuarioRepositorio.Obter(usuario.Email, usuario.Senha);
 
-                if(usuarioRetorno != null)
-                {
+
+                if (usuarioRetorno != null)
                     return Ok(usuarioRetorno);
-                }
 
-                return BadRequest("Usuario ou Senha invalido");
-
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.ToString());
-            }
-
-
-
-
-            try
-            {
-
-                if (usuario.Email == "rodrigobarreto@gmail.com" && usuario.Senha == "abc")
-                
-                    return Ok(usuario);
-                
-                   
-
-                return BadRequest("Usuario ou senha invalido");
-
+                return BadRequest("Usuário ou senha inválido");
             }
             catch (Exception ex)
             {

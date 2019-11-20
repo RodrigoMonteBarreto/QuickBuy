@@ -50,11 +50,6 @@ export class LoginComponent implements OnInit {
 
       );
 
-   // if (this.usuario.email == "rodrigobarreto@.com.br" && this.usuario.senha == "abc") {
-
-   //   sessionStorage.setItem("usuario-autenticado", "1");
-   //   this.router.navigate([this.returnUrl]);
-
     }
 
   }
