@@ -9,7 +9,7 @@ namespace QuickBuy.Repositorio.Migrations
             migrationBuilder.AlterColumn<decimal>(
                 name: "Preco",
                 table: "Produtos",
-                type: "deciaml(19,4)",
+                type: "decimal(19,4)",
                 nullable: false,
                 oldClrType: typeof(decimal));
         }
@@ -21,7 +21,7 @@ namespace QuickBuy.Repositorio.Migrations
                 table: "Produtos",
                 nullable: false,
                 oldClrType: typeof(decimal),
-                oldType: "deciaml(19,4)");
+                oldType: "decimal(19,4)");
         }
     }
 }

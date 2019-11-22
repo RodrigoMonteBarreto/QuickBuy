@@ -130,7 +130,7 @@ namespace QuickBuy.Repositorio.Migrations
                     b.Property<string>("NomeArquivo");
 
                     b.Property<decimal>("Preco")
-                        .HasColumnType("deciaml(19,4)");
+                        .HasColumnType("decimal(19,4)");
 
                     b.HasKey("Id");
 
