@@ -39,6 +39,9 @@ namespace QuickBuy.Repositorio.Config
                 .IsRequired()
                 .HasMaxLength(50);
 
+            builder
+                .Property(u => u.EhAdministrador);
+
             // O HasMany dá a possiblidade de acessar as propriedades de pedido
             // Um usuario u pode ter muitos pedidos (HasMany) e um Pedido p só pode ter um usuario
 
