@@ -26,7 +26,7 @@ export class LojaCarrinhoCompras {
 
       return JSON.parse(produtoLocaStorage);
 
-    
+    return this.produtos;
   }
 
   public removerProduto(produto: Produto) {
