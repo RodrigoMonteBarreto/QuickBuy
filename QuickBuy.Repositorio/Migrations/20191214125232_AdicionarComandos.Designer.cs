@@ -9,8 +9,8 @@ using QuickBuy.Repositorio.Contexto;
 namespace QuickBuy.Repositorio.Migrations
 {
     [DbContext(typeof(QuickBuyContexto))]
-    [Migration("20190913201747_AlterarTamanhoCampoPrecoProduto")]
-    partial class AlterarTamanhoCampoPrecoProduto
+    [Migration("20191214125232_AdicionarComandos")]
+    partial class AdicionarComandos
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,19 +24,37 @@ namespace QuickBuy.Repositorio.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("PedidoId");
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasMaxLength(100);
 
-                    b.Property<int>("ProdutoId");
-
-                    b.Property<int>("Quantidade");
+                    b.Property<string>("Nome")
+                        .IsRequired()
+                        .HasMaxLength(50);
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PedidoId");
+                    b.ToTable("FormaPagamento");
 
-                    b.ToTable("ItensPedidos");
-
-                   
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Descricao = "Forma de Pagamento Boleto",
+                            Nome = "Boleto"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Descricao = "Forma de Pagamento Cartão de Crédito",
+                            Nome = "Cartão de Crédito"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Descricao = "Forma de Pagamento Depósito",
+                            Nome = "Depósito"
+                        });
                 });
 
             modelBuilder.Entity("QuickBuy.Dominio.Entidades.ItemPedido", b =>
@@ -125,6 +143,8 @@ namespace QuickBuy.Repositorio.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("EhAdministrador");
 
                     b.Property<string>("Email")
                         .IsRequired()

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace QuickBuy.Repositorio.Migrations
 {
-    public partial class PrimeiraVersaoBase : Migration
+    public partial class AdicionarComandos : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -30,7 +30,8 @@ namespace QuickBuy.Repositorio.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Nome = table.Column<string>(maxLength: 50, nullable: false),
                     Descricao = table.Column<string>(maxLength: 400, nullable: false),
-                    Preco = table.Column<decimal>(nullable: false)
+                    Preco = table.Column<decimal>(type: "decimal(19,4)", nullable: false),
+                    NomeArquivo = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -46,7 +47,8 @@ namespace QuickBuy.Repositorio.Migrations
                     Email = table.Column<string>(maxLength: 50, nullable: false),
                     Senha = table.Column<string>(maxLength: 400, nullable: false),
                     Nome = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Sobrenome = table.Column<string>(maxLength: 50, nullable: false)
+                    Sobrenome = table.Column<string>(maxLength: 50, nullable: false),
+                    EhAdministrador = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -106,6 +108,21 @@ namespace QuickBuy.Repositorio.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
+
+            migrationBuilder.InsertData(
+                table: "FormaPagamento",
+                columns: new[] { "Id", "Descricao", "Nome" },
+                values: new object[] { 1, "Forma de Pagamento Boleto", "Boleto" });
+
+            migrationBuilder.InsertData(
+                table: "FormaPagamento",
+                columns: new[] { "Id", "Descricao", "Nome" },
+                values: new object[] { 2, "Forma de Pagamento Cartão de Crédito", "Cartão de Crédito" });
+
+            migrationBuilder.InsertData(
+                table: "FormaPagamento",
+                columns: new[] { "Id", "Descricao", "Nome" },
+                values: new object[] { 3, "Forma de Pagamento Depósito", "Depósito" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ItensPedidos_PedidoId",
