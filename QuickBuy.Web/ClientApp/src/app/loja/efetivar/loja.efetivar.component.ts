@@ -5,6 +5,7 @@ import { Pedido } from "../../nav-menu/model/pedido";
 import { UsuarioServico } from "../../servicos/usuario/usuario.servico";
 import { ItemPedido } from "../../nav-menu/model/itemPedido";
 import { PedidoServico } from "../../servicos/pedido/pedido.servico";
+import { Router } from "@angular/router";
 
 @Component({
 
@@ -27,7 +28,7 @@ export class LojaEfetivarComponent implements OnInit {
     this.atualizarTotal();
   }
 
-  constructor(private usuarioServico: UsuarioServico, private pedidoServico: PedidoServico) {
+  constructor(private usuarioServico: UsuarioServico, private pedidoServico: PedidoServico, private router: Router) {
 
   }
 
@@ -59,7 +60,11 @@ export class LojaEfetivarComponent implements OnInit {
     this.pedidoServico.efetivarCompra(this.criarPedido())
       .subscribe(
         pedidoId => {
-
+          console.log(pedidoId);
+          sessionStorage.setItem("pedidoId", pedidoId.toString());
+          this.produtos = [];
+          this.carrinhoCompras.limparCarrinhoCompras();
+          this.router.navigate(["/compra-realizada-sucesso"]);
         },
         e => {
 
@@ -76,6 +81,7 @@ export class LojaEfetivarComponent implements OnInit {
     pedido.dataPrevisaoEntrega = new Date();
     pedido.formaPagamentoId = 1;
     pedido.numeroEndereco = "10";
+    pedido.enderecoCompleto = "RuaManoelmessiasfeitosa";
 
     this.produtos = this.carrinhoCompras.obterProdutos();
 
